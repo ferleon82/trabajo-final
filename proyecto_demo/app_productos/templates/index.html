@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <title>Lista de Productos</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg0">
+                {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        BIENVENIDO: <b> {{ user|upper }} </b>
+                    </li>
+            </ul>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                        
+                        </li>
+                    </ul>
+                    <a class="btn btn-primary" href="/logout/">Cerrar Sesion</a>
+
+                {% endif %}
+            
+
+        </div>
+
+    </nav>
+
+    <h1 align="center">LISTA DE PRODUCTOS</h1> <br><br>
+
+    <div class="contend">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <a class="btn btn-outline-primary" href="/nuevo/">➕ PRODUCTO</a> <br><br>
+                
+                <table class="table table-hover">
+                    <thead style='text-align: center'>
+                        <th><h4>IMAGEN<h4></th>
+                        <th><h4>PRODUCTO</h4></th>               
+                        <th><h4>PRECIO</h4></th>
+                        <th><h4>CANTIDAD</h4></th>
+                        <th><h4>OPCIONES</h4></th>
+                    </thead>
+
+                <tbody>
+
+                    {% for p in productos %}
+                        <tr style='text-align: center'>
+                        <td>{{p.imagen_producto}}</td>
+                            <td>
+                                <p>
+                                <h5>
+                                    <a class="btn btn-outline-info" title='Ver Historial' href="/stock/{{p.id}}/">
+                                        <b>{{ p.fk_categoria }} : {{ p.nombre }} 🧾</b>
+                                    </a>
+                                </h5>
+                                <h6>
+                                {{ p.descripcion }}
+                                </h6>
+                            </p>
+                            </td>
+                          
+                            <td>$ {{ p.precio }} </td>
+                            <td> 
+                            <a class="btn btn-outline-success" title='Agregar Inventario' href="/editar_stock/{{p.id}}/">
+                             <b>{{ p.cantidad }}  🛒
+                            </b></a>
+                            </td>
+                            <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-success" title='Editar Producto' href="/editar/{{p.id}}/">✏️</a>
+                            <a class="btn btn-outline-danger" title='Eliminar Producto' href="/eliminar/{{p.id}}/">🗑️</a>
+                            </div>
+                            </td>
+                        
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+                </table>
+
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+    </div>
+
+
+    
+    
+</body>
+</html>

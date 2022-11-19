@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Editar Producto {% endblock %}
+
+{% block content %}
+<h2 align="center">Agregar Stock</h2>
+<br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="w3l-form-group">
+                <label for="">Movimiento:</label>
+                    <select name="movimiento">
+                        <option value="INGRESO" selected>INGRESO</option>
+                        <option value="EGRESO" >EGRESO</option>
+                    </select>
+
+                </div>
+              <!-- <div class="w3l-form-group">
+                <label for="">Fecha:</label>
+                <div class="group">
+                  <input type="datetime-local" name="fecha" required="required" class="form-control">
+              </div>
+              </div> -->
+              <div class="w3l-form-group">
+                <label for="">Cantidad:</label>
+                <div class="group">
+                  <input type="number" name="cantidad" placeholder="Cantidad" required="required" class="form-control">
+              </div>
+              </div><br><br>
+
+             
+
+
+
+            <button type="submit" class="btn btn-primary">GUARDAR</button>
+            <a class="btn btn-danger" href="/inicio/">CANCELAR</a>
+        </form>
+    </div>
+    <div class="col-2"></div>
+
+</div>
+
+{% endblock %}

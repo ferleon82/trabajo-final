@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Editar Producto {% endblock %}
+
+{% block content %}
+<h1 align="center">HISTORIAL DEL PRODUCTO</h1> <br><br>
+
+<div class="contend">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            
+            <table class="table table-hover">
+                <thead>
+                    <th><h4>PRODUCTO</h4></th>
+                    <th><h4>MOVIMIENTO</h4></th>
+                    <th><h4>CANTIDAD</h4></th>
+                    <th><h4>FECHA</h4></th>
+                </thead>
+
+            <tbody>
+
+                {% for p in stocks %}
+                    <tr>
+                        <td> {{ p.fk_producto }} </td>
+                        <td>{{ p.movimiento }} </td>
+                        <td> {{ p.cantidad }} </td>
+                        <td> {{ p.fecha }} </td>               
+                    
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+            </table>
+
+        </div>
+        
+        <div class="col-1"></div>
+        <div class="col-5"></div>
+        <a class="btn btn-danger" href="/inicio/">VOLVER</a>
+        </div>
+        
+</div>
+{% endblock %}
